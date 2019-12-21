@@ -1,10 +1,3 @@
-FROM ubuntu:18.04
-RUN apt-get update
-RUN apt-get install -y nginx
-WORKDIR /var/www/html
-RUN rm *
-COPY proyecto .
-#ADD carpeta /root/
-EXPOSE 80
-#ENV VAR_ENTORNO contenido
-CMD /usr/sbin/nginx -g "daemon off;"
+FROM php:7.2
+COPY ./ /app/root/
+CMD ["php","-S","0.0.0.0:7000","-t","/app/root/public"]
